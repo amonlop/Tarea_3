@@ -1,6 +1,6 @@
 package org.example;
 
-class Moneda500 extends Moneda implements Comparable {
+class Moneda500 extends Moneda implements Comparable<Moneda> {
 
     public Moneda500() {
         super();
@@ -17,7 +17,7 @@ class Moneda500 extends Moneda implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Moneda mon) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
     }

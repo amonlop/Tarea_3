@@ -3,6 +3,7 @@ package org.example;
 abstract class Producto {
     private int serie;
     private int precio;
+
     public Producto(int serie, int precio){
         this.serie=serie;
         this.precio=precio;
@@ -20,4 +21,7 @@ abstract class Producto {
     public int getPrecio(){
         return precio;
     }
+
+    public abstract String consumir();
+    
 }

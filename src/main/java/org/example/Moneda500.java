@@ -18,8 +18,13 @@ class Moneda500 extends Moneda implements Comparable<Moneda> {
 
     @Override
     public int compareTo(Moneda mon) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+        if(this.getValor() > mon.getValor()) {
+            return 1;
+        } else if(this.getValor() < mon.getValor()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
     
 }

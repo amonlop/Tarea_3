@@ -1,4 +1,5 @@
 package org.example;
+
 abstract class Producto {
     private int serie;
     private int precio;
@@ -6,17 +7,17 @@ abstract class Producto {
         this.serie=serie;
         this.precio=precio;
     }
-    public void SetProducto(int serie){
-        this.serie=serie;
-    }
-    public int GetProducto(){
+    // public void SetProducto(int serie){
+    //     this.serie=serie;
+    // }
+    public int getSerie(){
         return serie;
     }
-    public void SetPrecio(int precio){
+    public void setPrecio(int precio){
         this.precio=precio;
     }
 
-    public int GetPrecio(){
+    public int getPrecio(){
         return precio;
     }
 }

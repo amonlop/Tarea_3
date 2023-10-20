@@ -2,8 +2,8 @@ package org.example;
 
 class Super8 extends Dulce {
 
-    public Super8(int serie, int precio) {
-        super(serie, precio);
+    public Super8(int serie) {
+        super(serie);
     }
 
     @Override

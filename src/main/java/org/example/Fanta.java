@@ -2,8 +2,8 @@ package org.example;
 
 class Fanta extends Bebida {
 
-    public Fanta(int serie, int precio) {
-        super(serie, precio);
+    public Fanta(int serie) {
+        super(serie);
     }
 
     @Override

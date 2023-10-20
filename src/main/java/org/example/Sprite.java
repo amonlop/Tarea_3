@@ -2,8 +2,8 @@ package org.example;
 
 class Sprite extends Bebida {
 
-    public Sprite(int serie, int precio) {
-        super(serie, precio);
+    public Sprite(int serie) {
+        super(serie);
     }
 
     @Override

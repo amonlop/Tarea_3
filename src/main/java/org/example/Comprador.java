@@ -4,7 +4,7 @@ class Comprador {
     private String sabor;
     private int vuelto;
 
-    public Comprador(Moneda m, int eleccion, Expendedor exp) {
+    public Comprador(Moneda m, int eleccion, Expendedor exp) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
         Producto p = exp.comprarProducto(m, eleccion);
 
         Moneda moneda = null;

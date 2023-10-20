@@ -9,14 +9,13 @@ class Expendedor {
 
     private Deposito<Moneda> monVu;
 
-    private PrecioYSeleccion p_precio_seleccion;
-
     public Expendedor(int cantProductos) {
         coca = new Deposito<>();
         sprite = new Deposito<>();
         fanta = new Deposito<>();
         snickers = new Deposito<>();
         super8 = new Deposito<>();
+        monVu = new Deposito<>();
 
         //numero de serie
         for(int i = 0; i < cantProductos; i++) {
@@ -29,11 +28,12 @@ class Expendedor {
 
     }
 
-    public Producto comprarProducto(Moneda m, int seleccion){
+    public Producto comprarProducto(Moneda m, int seleccion) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException { 
         Producto producto = null;
+        PrecioYSeleccion p_precio_seleccion;
 
-        if(m == null) { // excepcion PagoIncorrecto
-            return null;
+        if(m == null)  { // excepcion PagoIncorrecto
+            throw new PagoIncorrectoException("No se ingresó una moneda");
         }
 
         switch (seleccion) {
@@ -58,7 +58,8 @@ class Expendedor {
         }
 
         if(p_precio_seleccion == null) { //numero de seleccion equivocado excepcion NOhayproducto
-            return null;
+            monVu.addElemento(m);
+            throw new NoHayProductoException("Número de selección no existe");
         }
 
         if(m!=null && m.getValor() >= p_precio_seleccion.getPrecio()){
@@ -94,8 +95,10 @@ class Expendedor {
 
         if(producto == null) { //excepcion NOhayproducto
             monVu.addElemento(m);
-        } else if(m.getValor() < p_precio_seleccion.getPrecio()) { // excepcion pagoinsuficiente
+            throw new NoHayProductoException("No hay más producto: " + p_precio_seleccion.name()); 
+        } else if(m.getValor() < p_precio_seleccion.getPrecio()){ // excepcion pagoinsuficiente
             monVu.addElemento(m);
+            throw new PagoInsuficienteException("Dinero insuficiente"); 
         } 
 
         return producto;

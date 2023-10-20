@@ -6,9 +6,10 @@ abstract class Producto {
     public Producto(int serie){
         this.serie=serie;
     }
-    // public void SetProducto(int serie){
-    //     this.serie=serie;
-    // }
+    
+    /** 
+     * @return int
+     */
     public int getSerie(){
         return serie;
     }

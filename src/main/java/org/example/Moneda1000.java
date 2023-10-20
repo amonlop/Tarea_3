@@ -6,6 +6,10 @@ class Moneda1000 extends Moneda implements Comparable<Moneda> {
         super();
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int getValor() {
         return 1000;

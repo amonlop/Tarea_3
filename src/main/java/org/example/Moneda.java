@@ -6,6 +6,10 @@ abstract class Moneda {
 
     }
 
+    
+    /** 
+     * @return Moneda
+     */
     public Moneda getSerie() {
         return this;
     }

@@ -16,10 +16,18 @@ class Comprador {
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     public int cuantoVuelto() {
         return vuelto;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String queConsumiste() {
         return sabor;
     }

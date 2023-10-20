@@ -6,6 +6,10 @@ class Sprite extends Bebida {
         super(serie);
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String consumir() {
         return "sprite";

@@ -9,6 +9,10 @@ class Deposito<T> {
         elementos = new ArrayList<T>();
     }
 
+    
+    /** 
+     * @param elemento
+     */
     public void addElemento(T elemento) {
         elementos.add(elemento);
     }

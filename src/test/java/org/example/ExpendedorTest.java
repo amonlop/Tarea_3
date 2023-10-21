@@ -70,7 +70,7 @@ class ExpendedorTest {
             // Comprar un producto con una moneda de 1000
             Producto producto = expendedor.comprarProducto(moneda1000, seleccion);
             Moneda vuelto = expendedor.getVuelto();
-            assertNull(vuelto);
+            assertNull(vuelto);//es el vuelto esperado de un pago exacto
         } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
             fail("No se esperaba una excepción: " + e.getClass().getName());
         }

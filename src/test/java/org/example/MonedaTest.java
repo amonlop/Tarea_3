@@ -11,7 +11,7 @@ public class MonedaTest {
     public void testGetValor() {
         Moneda100 moneda100 = new Moneda100();
         assertEquals(100, moneda100.getValor());
-    }
+    }//
 
 
     @Test

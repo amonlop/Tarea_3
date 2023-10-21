@@ -48,16 +48,29 @@ class ExpendedorTest {
 
     @Test
     void getVuelto() {
-        Moneda moneda1000 = new Moneda1000(); // Moneda de 1000 (suficiente para comprar cualquier producto)
+        Moneda moneda1500 = new Moneda1500(); // Moneda de 1500 (suficiente para comprar cualquier producto)
+        int seleccion = 1; // Por ejemplo, comprar una Coca-Cola
+
+        try {
+            // Comprar un producto con una moneda de 1500
+            Producto producto = expendedor.comprarProducto(moneda1500, seleccion);
+            Moneda vuelto = expendedor.getVuelto();
+
+            assertEquals(100, vuelto.getValor());//ya que el vuelto se devuelve de a monedas de a 100
+        } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
+            fail("No se esperaba una excepción: " + e.getClass().getName());
+        }
+    }
+    @Test
+    void getVueltoNull() {
+        Moneda moneda1000 = new Moneda1000();
         int seleccion = 1; // Por ejemplo, comprar una Coca-Cola
 
         try {
             // Comprar un producto con una moneda de 1000
             Producto producto = expendedor.comprarProducto(moneda1000, seleccion);
             Moneda vuelto = expendedor.getVuelto();
-
-            assertNotNull(vuelto);
-            assertEquals(0, vuelto.getValor()); // El vuelto debe ser de 0 (no hay cambio)
+            assertNull(vuelto);
         } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
             fail("No se esperaba una excepción: " + e.getClass().getName());
         }

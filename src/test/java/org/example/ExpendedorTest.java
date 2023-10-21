@@ -41,7 +41,7 @@ class ExpendedorTest {
         Moneda moneda500 = new Moneda500();
         int seleccion = 3;
 
-        assertThrows(NoHayPoductoException.class, () -> {
+        assertThrows(PagoInsuficienteException.class, () -> {
             expendedor.comprarProducto(moneda500, seleccion);
         });
     }

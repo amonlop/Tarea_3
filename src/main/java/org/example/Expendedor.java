@@ -102,13 +102,15 @@ class Expendedor {
             }
         }
 
-        if(producto == null) { //excepcion NOhayproducto
-            monVu.addElemento(m);
-            throw new NoHayProductoException("No hay más producto: " + p_precio_seleccion.name()); 
-        } else if(m.getValor() < p_precio_seleccion.getPrecio()){ // excepcion pagoinsuficiente
+
+        if(m.getValor() < p_precio_seleccion.getPrecio()){ // excepcion pagoinsuficiente
             monVu.addElemento(m);
             throw new PagoInsuficienteException("Dinero insuficiente"); 
-        } 
+        }
+        if(producto == null) { //excepcion NOhayproducto
+            monVu.addElemento(m);
+            throw new NoHayProductoException("No hay más producto: " + p_precio_seleccion.name());
+        }
 
         return producto;
 

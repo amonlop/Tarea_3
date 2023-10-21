@@ -12,7 +12,7 @@ class ExpendedorTest {
     @BeforeEach
     void setUp() {
         // Inicializar un expendedor con una cantidad de productos (por ejemplo, 10 productos de cada tipo)
-        expendedor = new Expendedor(999);
+        expendedor = new Expendedor(10);
     }
 
     @AfterEach

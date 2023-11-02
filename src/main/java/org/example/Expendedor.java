@@ -8,6 +8,9 @@ class Expendedor {
     private Deposito<Producto> super8;
 
     private Deposito<Moneda> monVu;
+    private Deposito<Moneda> monVuGUI;
+
+    private DepositoProducto productoUnico;
 
     public Expendedor(int cantProductos) {
         coca = new Deposito<>();
@@ -16,6 +19,7 @@ class Expendedor {
         snickers = new Deposito<>();
         super8 = new Deposito<>();
         monVu = new Deposito<>();
+        monVuGUI = new Deposito<>();
 
         //numero de serie
         for(int i = 0; i < cantProductos; i++) {
@@ -37,7 +41,7 @@ class Expendedor {
      * @throws PagoInsuficienteException
      * @throws NoHayProductoException
      */
-    public Producto comprarProducto(Moneda m, int seleccion) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException { 
+    public void comprarProducto(Moneda m, int seleccion) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException { 
         Producto producto = null;
         PrecioYSeleccion p_precio_seleccion;
 
@@ -112,11 +116,15 @@ class Expendedor {
             throw new NoHayProductoException("No hay más producto: " + p_precio_seleccion.name());
         }
 
-        return producto;
+        this.productoUnico = new DepositoProducto(producto);
 
     }
 
     public Moneda getVuelto() {
         return monVu.getElemento();
+    }
+
+    public Producto getProducto() {
+        return productoUnico.getProducto();
     }
 }

@@ -14,7 +14,7 @@ public class Ventana extends JFrame {
         this.add(new PanelPrincipal(),BorderLayout.CENTER); 
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(400,300);
+        this.setSize(600,450);
         this.setVisible(true); 
     } 
 }

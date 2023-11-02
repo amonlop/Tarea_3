@@ -33,14 +33,6 @@ class Expendedor {
     }
 
     
-    /** 
-     * @param m
-     * @param seleccion
-     * @return Producto
-     * @throws PagoIncorrectoException
-     * @throws PagoInsuficienteException
-     * @throws NoHayProductoException
-     */
     public void comprarProducto(Moneda m, int seleccion) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException { 
         Producto producto = null;
         PrecioYSeleccion p_precio_seleccion;

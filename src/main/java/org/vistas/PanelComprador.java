@@ -2,7 +2,9 @@ package org.vistas;
 
 import java.awt.Graphics;
 
-public class PanelComprador {
+import javax.swing.JPanel;
+
+class PanelComprador extends JPanel {
     
     PanelComprador() {
 

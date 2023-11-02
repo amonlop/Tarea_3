@@ -16,7 +16,7 @@ class Moneda100 extends Moneda implements Comparable<Moneda> {
     }
 
     @Override
-    public String toString() {
+    public String toStringM() {
         return "Serie: " + super.getSerie() + ", valor: " + getValor();
     }
 

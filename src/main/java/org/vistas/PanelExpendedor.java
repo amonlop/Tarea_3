@@ -2,7 +2,9 @@ package org.vistas;
 
 import java.awt.Graphics;
 
-public class PanelExpendedor {
+import javax.swing.JPanel;
+
+class PanelExpendedor extends JPanel {
 
     PanelExpendedor() {
         

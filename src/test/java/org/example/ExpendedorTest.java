@@ -26,7 +26,8 @@ class ExpendedorTest {
         int seleccion = 1; // Por ejemplo, comprar una Coca-Cola
 
         try {
-            Producto producto = expendedor.comprarProducto(moneda1000, seleccion);
+            expendedor.comprarProducto(moneda1000, seleccion);
+            Producto producto = expendedor.getProducto();
 
             assertNotNull(producto);
             assertEquals("cocacola", producto.consumir());
@@ -53,7 +54,8 @@ class ExpendedorTest {
 
         try {
             // Comprar un producto con una moneda de 1500
-            Producto producto = expendedor.comprarProducto(moneda1500, seleccion);
+            expendedor.comprarProducto(moneda1500, seleccion);
+            Producto producto = expendedor.getProducto();
             Moneda vuelto = expendedor.getVuelto();
 
             assertEquals(100, vuelto.getValor());//ya que el vuelto se devuelve de a monedas de a 100
@@ -68,7 +70,8 @@ class ExpendedorTest {
 
         try {
             // Comprar un producto con una moneda de 1000
-            Producto producto = expendedor.comprarProducto(moneda1000, seleccion);
+            expendedor.comprarProducto(moneda1000, seleccion);
+            Producto producto = expendedor.getProducto();
             Moneda vuelto = expendedor.getVuelto();
             assertNull(vuelto);//es el vuelto esperado de un pago exacto
         } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {

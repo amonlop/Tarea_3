@@ -3,7 +3,7 @@ package org.example;
 abstract class Moneda {
 
     public Moneda() {
-
+        
     }
 
     
@@ -16,6 +16,6 @@ abstract class Moneda {
 
     public abstract int getValor();
 
-    public abstract String toString();
+    public abstract String toStringM();
     
 }

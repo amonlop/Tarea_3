@@ -11,7 +11,7 @@ import java.io.*;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLayeredPane;
-
+//a
 class PanelComprador extends JPanel implements ActionListener {
     private JButton coca, sprite, fanta, snickers, super8, M100, M500, M1000, M1500;
     private ButtonGroup bebidaGroup,monedaGroup;

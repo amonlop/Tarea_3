@@ -3,6 +3,7 @@ package org.vistas;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 

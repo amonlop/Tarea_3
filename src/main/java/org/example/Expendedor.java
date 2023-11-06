@@ -35,7 +35,9 @@ class Expendedor {
     
     public void comprarProducto(Moneda m, int seleccion) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException { 
         Producto producto = null;
-        PrecioYSeleccion p_precio_seleccion;
+        Precio precio;
+        Seleccion opcion;
+        
 
         if(m == null)  { // excepcion PagoIncorrecto
             throw new PagoIncorrectoException("No se ingresó una moneda");
@@ -43,32 +45,42 @@ class Expendedor {
 
         switch (seleccion) {
             case 1:
-                p_precio_seleccion = PrecioYSeleccion.COCACOLA;
+                opcion = Seleccion.COCACOLA;
+                precio = Precio.COCACOLA;
                 break;
             case 2:
-                p_precio_seleccion = PrecioYSeleccion.SPRITE;
+                opcion = Seleccion.SPRITE;
+                precio = Precio.SPRITE;
+
                 break;
             case 3:
-                p_precio_seleccion = PrecioYSeleccion.FANTA;
+                opcion = Seleccion.FANTA;
+                precio = Precio.FANTA;
+
                 break;
             case 4:
-                p_precio_seleccion = PrecioYSeleccion.SNICKERS;
+                opcion = Seleccion.SNICKERS;
+                precio = Precio.SNICKERS;
+
                 break;
             case 5:
-                p_precio_seleccion = PrecioYSeleccion.SUPER8;
+                opcion = Seleccion.SUPER8;
+                precio = Precio.SUPER8;
+
                 break;
             default:
-                p_precio_seleccion = null;
+                opcion = null;
+                precio = null;
                 break;
         }
 
-        if(p_precio_seleccion == null) { //numero de seleccion equivocado excepcion NOhayproducto
+        if(opcion == null) { //numero de seleccion equivocado excepcion NOhayproducto
             monVu.addElemento(m);
             throw new NoHayProductoException("Número de selección no existe");
         }
 
-        if(m!=null && m.getValor() >= p_precio_seleccion.getPrecio()){
-            switch (p_precio_seleccion.getOpcion()) {
+        if(m!=null && m.getValor() >= precio.getPrecio()){
+            switch (opcion.getOpcion()) {
                 case 1:
                     producto = coca.getElemento();
                     break;
@@ -90,7 +102,7 @@ class Expendedor {
 
             }
             if(producto!=null){
-                int n = (m.getValor() - p_precio_seleccion.getPrecio())/100;
+                int n = (m.getValor() - precio.getPrecio())/100;
                 while (n>0) {
                     monVu.addElemento(new Moneda100());
                     n--;
@@ -99,13 +111,13 @@ class Expendedor {
         }
 
 
-        if(m.getValor() < p_precio_seleccion.getPrecio()){ // excepcion pagoinsuficiente
+        if(m.getValor() < precio.getPrecio()){ // excepcion pagoinsuficiente
             monVu.addElemento(m);
             throw new PagoInsuficienteException("Dinero insuficiente"); 
         }
         if(producto == null) { //excepcion NOhayproducto
             monVu.addElemento(m);
-            throw new NoHayProductoException("No hay más producto: " + p_precio_seleccion.name());
+            throw new NoHayProductoException("No hay más producto: " + precio.name());
         }
 
         this.productoUnico = new DepositoProducto(producto);

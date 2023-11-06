@@ -16,7 +16,8 @@ import javax.swing.JLayeredPane;
 class PanelComprador extends JPanel implements ActionListener {
     private JButton coca, sprite, fanta, snickers, super8, M100, M500, M1000, M1500;
     private ButtonGroup bebidaGroup,monedaGroup;
-    private int eleccion, moneda;
+    private int moneda;
+    private Seleccion eleccion;
 
     public PanelComprador() {
         bebidaGroup = new ButtonGroup();
@@ -77,19 +78,19 @@ class PanelComprador extends JPanel implements ActionListener {
             // Se ha seleccionado un botón de bebida
             switch (buttonText) {
                 case "Coca":
-                    eleccion = 1;
+                    eleccion = Seleccion.COCACOLA;
                     break;
                 case "Sprite":
-                    eleccion = 2;
+                    eleccion = Seleccion.SPRITE;
                     break;
                 case "Fanta":
-                    eleccion = 3;
+                    eleccion = Seleccion.FANTA;
                     break;
                 case "Snickers":
-                    eleccion = 4;
+                    eleccion = Seleccion.SNICKERS;
                     break;
                 case "Super 8":
-                    eleccion = 5;
+                    eleccion = Seleccion.SUPER8;
                     break;
             }
         }

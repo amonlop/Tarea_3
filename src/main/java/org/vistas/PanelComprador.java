@@ -1,6 +1,7 @@
 package org.vistas;
 
 import org.example.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,13 +13,19 @@ import java.io.*;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLayeredPane;
+
+import static org.example.Seleccion.FANTA;
+
 //a
 class PanelComprador extends JPanel implements ActionListener {
     private JButton coca, sprite, fanta, snickers, super8, M100, M500, M1000, M1500;
     private ButtonGroup bebidaGroup,monedaGroup;
-    private int eleccion, moneda;
+    private int moneda;
+    private Seleccion eleccion;
 
     public PanelComprador() {
+        setVisible(true);
+        setBounds(0,0,300,500);
         bebidaGroup = new ButtonGroup();
         monedaGroup = new ButtonGroup();
 
@@ -77,19 +84,19 @@ class PanelComprador extends JPanel implements ActionListener {
             // Se ha seleccionado un botón de bebida
             switch (buttonText) {
                 case "Coca":
-                    eleccion = 1;
+                    eleccion = Seleccion.COCACOLA;
                     break;
                 case "Sprite":
-                    eleccion = 2;
+                    eleccion = Seleccion.SPRITE;
                     break;
                 case "Fanta":
-                    eleccion = 3;
+                    eleccion = Seleccion.FANTA;
                     break;
                 case "Snickers":
-                    eleccion = 4;
+                    eleccion = Seleccion.SNICKERS;
                     break;
                 case "Super 8":
-                    eleccion = 5;
+                    eleccion = Seleccion.SUPER8;
                     break;
             }
         }
@@ -111,6 +118,7 @@ class PanelComprador extends JPanel implements ActionListener {
                     break;
             }
         }
+
     }
 
 
@@ -118,7 +126,7 @@ class PanelComprador extends JPanel implements ActionListener {
         super.paintComponent(g);
         for (int i = 0; i < 90; i++) {
             g.setColor(Color.RED);
-            g.drawRect(50+i*50, 50, 50, 50);
+            g.drawRect(50+i*5, 400+5*i, 50, 50);
         }
     }
 }

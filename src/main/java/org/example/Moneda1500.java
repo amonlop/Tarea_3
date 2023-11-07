@@ -1,6 +1,6 @@
 package org.example;
 
-class Moneda1500 extends Moneda implements Comparable<Moneda> {
+public class Moneda1500 extends Moneda implements Comparable<Moneda> {
 
     public Moneda1500() {
         super();

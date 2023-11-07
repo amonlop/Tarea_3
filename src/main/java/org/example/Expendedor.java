@@ -1,6 +1,6 @@
 package org.example;
 
-class Expendedor {
+public class Expendedor {
     private Deposito<Producto> coca;
     private Deposito<Producto> sprite;
     private Deposito<Producto> fanta;

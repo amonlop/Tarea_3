@@ -4,120 +4,110 @@ import org.example.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.*;
-import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JLayeredPane;
 
-import static org.example.Seleccion.FANTA;
 
 //a
 class PanelComprador extends JPanel implements ActionListener {
-    private JButton coca, sprite, fanta, snickers, super8, M100, M500, M1000, M1500;
-    private ButtonGroup bebidaGroup,monedaGroup;
-    private int moneda;
+    private JComboBox<String> opcionesProductos;
+    private JLabel textoSeleccion;
+    private JButton botonComprar;
+     private JLabel textoMoneda;
+    private JRadioButton moneda1000, moneda1500, moneda500, moneda100;
+    private ButtonGroup monedas;
     private Seleccion eleccion;
+    private int monedaElegida;
+
 
     public PanelComprador() {
-        setVisible(true);
-        setBounds(0,0,300,500);
-        bebidaGroup = new ButtonGroup();
-        monedaGroup = new ButtonGroup();
+        this.setLayout(new BorderLayout());
+        textoSeleccion = new JLabel("Selecciona un producto:");
+        opcionesProductos = new JComboBox<>(new String[]{"Fanta", "CocaCola", "Sprite", "Snickers", "Super8"});
+        botonComprar = new JButton("Comprar");
+        textoMoneda = new JLabel("Inserta una moneda:");
+        moneda1000 = new JRadioButton("1000");
+        moneda1500 = new JRadioButton("1500");
+        moneda500 = new JRadioButton("500");
+        moneda100 = new JRadioButton("100");
 
-        coca = new JButton("Coca");
-        coca.addActionListener(this);
-        bebidaGroup.add(coca);
-        add(coca);
+        monedas = new ButtonGroup();
+        monedas.add(moneda1500);
+        monedas.add(moneda1000);
+        monedas.add(moneda500);
+        monedas.add(moneda100);
 
-        sprite = new JButton("Sprite");
-        sprite.addActionListener(this);
-        bebidaGroup.add(sprite);
-        add(sprite);
+        botonComprar.addActionListener(this);
 
-        fanta = new JButton("Fanta");
-        fanta.addActionListener(this);
-        bebidaGroup.add(fanta);
-        add(fanta);
+        JPanel contenedorPrincipal = new JPanel();
+        contenedorPrincipal.setLayout(new BorderLayout());
+        contenedorPrincipal.add(textoSeleccion, BorderLayout.NORTH);
+        contenedorPrincipal.add(opcionesProductos, BorderLayout.CENTER);
+        contenedorPrincipal.add(botonComprar, BorderLayout.SOUTH);
 
-        snickers = new JButton("Snickers");
-        snickers.addActionListener(this);
-        bebidaGroup.add(snickers);
-        add(snickers);
+        JPanel contenedorMonedas = new JPanel();
+        contenedorMonedas.setLayout(new GridLayout(0, 1));
+        contenedorMonedas.add(textoMoneda);
+        contenedorMonedas.add(moneda1500);
+        contenedorMonedas.add(moneda1000);
+        contenedorMonedas.add(moneda500);
+        contenedorMonedas.add(moneda100);
 
-        super8 = new JButton("Super 8");
-        super8.addActionListener(this);
-        bebidaGroup.add(super8);
-        add(super8);
+        JPanel contenedorVuelto = new JPanel();
+        contenedorVuelto.setLayout(new GridLayout(0, 1));
+        contenedorVuelto.add(new JButton("Aquí va el vuelto"));
+        contenedorVuelto.add(new JButton("Aquí va el vuelto"));
+        contenedorVuelto.add(new JButton("Aquí va el vuelto"));
 
-        M100 = new JButton("100");
-        M100.addActionListener(this);
-        monedaGroup.add(M100);
-        add(M100);
 
-        M500 = new JButton("500");
-        M500.addActionListener(this);
-        monedaGroup.add(M500);
-        add(M500);
 
-        M1000 = new JButton("1000");
-        M1000.addActionListener(this);
-        monedaGroup.add(M1000);
-        add(M1000);
+        this.add(contenedorPrincipal, BorderLayout.CENTER);
+        this.add(contenedorMonedas, BorderLayout.NORTH);
+        this.add(contenedorVuelto, BorderLayout.SOUTH);
 
-        M1500 = new JButton("1500");
-        M1500.addActionListener(this);
-        monedaGroup.add(M1500);
-        add(M1500);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton button = (JButton) e.getSource();
-        String buttonText = button.getText();
-
-        if (bebidaGroup.isSelected(button.getModel())) {
-            // Se ha seleccionado un botón de bebida
-            switch (buttonText) {
-                case "Coca":
-                    eleccion = Seleccion.COCACOLA;
-                    break;
-                case "Sprite":
-                    eleccion = Seleccion.SPRITE;
-                    break;
-                case "Fanta":
-                    eleccion = Seleccion.FANTA;
-                    break;
-                case "Snickers":
-                    eleccion = Seleccion.SNICKERS;
-                    break;
-                case "Super 8":
-                    eleccion = Seleccion.SUPER8;
-                    break;
-            }
+        String producto = (String) opcionesProductos.getSelectedItem();
+       
+        switch (producto) {
+            case "CocaCola":
+                eleccion = Seleccion.COCACOLA;
+                break;
+            case "Sprite":
+                eleccion = Seleccion.SPRITE;
+                break;
+            case "Fanta":
+                eleccion = Seleccion.FANTA;
+                break;
+            case "Snickers":
+                eleccion = Seleccion.SNICKERS;
+                break;
+            case "Super8":
+                eleccion = Seleccion.SUPER8;
+                break;
+            default:
+                eleccion = null;
+                break;
         }
 
-        if (monedaGroup.isSelected(button.getModel())) {
-            // Se ha seleccionado un botón de moneda
-            switch (buttonText) {
-                case "100":
-                    moneda = 100;
-                    break;
-                case "500":
-                    moneda = 500;
-                    break;
-                case "1000":
-                    moneda = 1000;
-                    break;
-                case "1500":
-                    moneda = 1500;
-                    break;
-            }
+
+        System.out.println(eleccion.getOpcion());
+        
+
+        if (moneda1500.isSelected()) {
+            monedaElegida = 1500;
+        } else if (moneda1000.isSelected()) {
+            monedaElegida = 1000;
+        } else if (moneda500.isSelected()) {
+            monedaElegida = 500;
+        } else if (moneda100.isSelected()) {
+            monedaElegida = 100;
         }
+
+        System.out.println(monedaElegida);
+        
 
     }
 

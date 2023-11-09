@@ -74,12 +74,18 @@ class PanelComprador extends JPanel implements ActionListener {
         }
 
         System.out.println(eleccion.getOpcion());
-        System.out.println(mon.getValor());
 
 
-        
+        try {
+            this.comprador = new Comprador(mon, eleccion.getOpcion(), exp);
+        } catch(PagoIncorrectoException error1) {
+            System.out.println(error1.getMessage());
+        } catch(NoHayProductoException error2) {
+            System.out.println(error2.getMessage());
+        } catch(PagoInsuficienteException error3) {
+            System.out.println(error3.getMessage());
+        }
 
-        //this.comprador = new Comprador(mon, eleccion.getOpcion(), exp);
 
     }
 

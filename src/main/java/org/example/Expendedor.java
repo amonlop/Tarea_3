@@ -1,6 +1,7 @@
 package org.example;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Expendedor {
     private Deposito<Producto> coca;
@@ -44,6 +45,8 @@ public class Expendedor {
         if(m == null)  { // excepcion PagoIncorrecto
             throw new PagoIncorrectoException("No se ingresó una moneda");
         }
+
+        monVuGUI.addElemento(m);
 
         switch (seleccion) {
             case 1:
@@ -133,6 +136,11 @@ public class Expendedor {
     public Producto getProducto() {
         return productoUnico.getProducto();
     }
+
+    public ArrayList<Moneda> getMonedasVuelto() {
+        return monVu.getElementos();
+    } 
+
     public int MiraDeposito(int CualProducto) {
         int Cantidad=0;
         switch (CualProducto) {
@@ -151,12 +159,12 @@ public class Expendedor {
             case 5:
                 Cantidad = super8.size();
                 break;
-            case 6:
-                Cantidad = monVu.size();
-                break;
-            case 7:
-                Cantidad = monVuGUI.size();
-                break;
+            // case 6:
+            //     Cantidad = monVu.size();
+            //     break;
+            // case 7:
+            //     Cantidad = monVuGUI.size();
+            //     break;
         }
         return Cantidad;
     }

@@ -13,11 +13,12 @@ class PanelComprador extends JPanel implements ActionListener {
     private JComboBox<String> opcionesProductos;
     private JLabel textoSeleccion;
     private JButton botonComprar;
-     private JLabel textoMoneda;
+    private JLabel textoMoneda;
     private JRadioButton moneda1000, moneda1500, moneda500, moneda100;
     private ButtonGroup monedas;
     private Seleccion eleccion;
     private int monedaElegida;
+    private Comprador comprador;
 
 
     public PanelComprador() {
@@ -59,8 +60,6 @@ class PanelComprador extends JPanel implements ActionListener {
         contenedorVuelto.add(new JButton("Aquí va el vuelto"));
         contenedorVuelto.add(new JButton("Aquí va el vuelto"));
 
-
-
         this.add(contenedorPrincipal, BorderLayout.CENTER);
         this.add(contenedorMonedas, BorderLayout.NORTH);
         this.add(contenedorVuelto, BorderLayout.SOUTH);
@@ -70,6 +69,7 @@ class PanelComprador extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String producto = (String) opcionesProductos.getSelectedItem();
+        Moneda mon;
        
         switch (producto) {
             case "CocaCola":
@@ -92,22 +92,22 @@ class PanelComprador extends JPanel implements ActionListener {
                 break;
         }
 
-
-        System.out.println(eleccion.getOpcion());
-        
-
         if (moneda1500.isSelected()) {
             monedaElegida = 1500;
+            mon = new Moneda1500();
         } else if (moneda1000.isSelected()) {
             monedaElegida = 1000;
+            mon = new Moneda1000();
         } else if (moneda500.isSelected()) {
             monedaElegida = 500;
+            mon = new Moneda500();
         } else if (moneda100.isSelected()) {
             monedaElegida = 100;
+            mon = new Moneda100();
+        } else {
+            mon = null;
         }
 
-        System.out.println(monedaElegida);
-        
 
     }
 

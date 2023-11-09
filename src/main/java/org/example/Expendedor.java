@@ -1,5 +1,7 @@
 package org.example;
 
+import java.awt.*;
+
 public class Expendedor {
     private Deposito<Producto> coca;
     private Deposito<Producto> sprite;
@@ -130,5 +132,63 @@ public class Expendedor {
 
     public Producto getProducto() {
         return productoUnico.getProducto();
+    }
+    public int MiraDeposito(int CualProducto) {
+        int Cantidad=0;
+        switch (CualProducto) {
+            case 1:
+                Cantidad = coca.size();
+                break;
+            case 2:
+                Cantidad = sprite.size();
+                break;
+            case 3:
+                Cantidad = fanta.size();
+                break;
+            case 4:
+                Cantidad = snickers.size();
+                break;
+            case 5:
+                Cantidad = super8.size();
+                break;
+            case 6:
+                Cantidad = monVu.size();
+                break;
+            case 7:
+                Cantidad = monVuGUI.size();
+                break;
+        }
+        return Cantidad;
+    }
+    public void rellenarVoids(int cuanto) {
+        if(coca.size()==0){
+            for (int i = 0; i < cuanto; i++) {
+                coca.addElemento(new CocaCola(i));
+            }
+        }
+
+        if(sprite.size()==0){
+            for (int i = 0; i < cuanto; i++) {
+                sprite.addElemento(new Sprite(i + cuanto));
+            }
+        }
+
+        if(fanta.size()==0){
+            for (int i = 0; i < cuanto; i++) {
+                fanta.addElemento(new Fanta(i + 2 * cuanto));
+            }
+        }
+
+        if(snickers.size()==0){
+            for (int i = 0; i < cuanto; i++) {
+                snickers.addElemento(new Snickers(i + 3 * cuanto));
+            }
+        }
+
+        if(super8.size()==0){
+            for (int i = 0; i < cuanto; i++) {
+                super8.addElemento(new Super8(i + 4 * cuanto));
+            }
+        }
     }
 }

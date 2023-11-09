@@ -18,9 +18,11 @@ class PanelComprador extends JPanel implements ActionListener {
     private Seleccion eleccion;
     private int monedaElegida;
     private Comprador comprador;
+    private Expendedor exp;
 
 
     public PanelComprador(Expendedor exp) {
+        this.exp = exp;
         this.setLayout(new BorderLayout());
         textoSeleccion = new JLabel("Selecciona un producto:");
         opcionesProductos = new JComboBox<>(new String[]{"Fanta", "CocaCola", "Sprite", "Snickers", "Super8"});
@@ -107,15 +109,18 @@ class PanelComprador extends JPanel implements ActionListener {
             mon = null;
         }
 
+        
+
+        // this.comprador = new Comprador(mon, eleccion.getOpcion(), exp);
 
     }
 
 
-    public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int i = 0; i < 90; i++) {
-            //g.setColor(Color.RED);
-            //g.drawRect(50+i*5, 400+5*i, 50, 50);
+            // g.setColor(Color.RED);
+            // g.drawRect(50+i*5, 400+5*i, 50, 50);
         }
     }
 }

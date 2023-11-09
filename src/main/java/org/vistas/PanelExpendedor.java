@@ -59,13 +59,11 @@ class PanelExpendedor extends JPanel {
             g.setColor(Color.WHITE);
             g.drawRect(x, y, 50, 50);
 
-            x += 10; // Espacio horizontal entre productos
+            x += 30; // Espacio horizontal entre productos
         }
     }
     // Método para dibujar un monedas con la cantidad especificada
     public void paintMonVu(Graphics g, int x, int y){
-
-
     }
     private void dibujarMonedas(Graphics g, int x, int y, int cantidad, String valor, Color color) {
         for (int i = 0; i < cantidad; i++) {
@@ -78,7 +76,7 @@ class PanelExpendedor extends JPanel {
             g.setColor(Color.WHITE);
             g.drawOval(x, y, 50, 50);
 
-            x += 10; // Espacio horizontal entre productos
+            x += 20; // Espacio horizontal entre productos
         }
     }
     public void handleMouseClick(int x, int y) {

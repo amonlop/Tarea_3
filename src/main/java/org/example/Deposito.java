@@ -23,4 +23,7 @@ class Deposito<T> {
         }
         return elementos.remove(0);
     }
+    public int size(){
+        return elementos.size();
+    }
 }

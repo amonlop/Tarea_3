@@ -16,7 +16,6 @@ class PanelComprador extends JPanel implements ActionListener {
     private JRadioButton moneda1000, moneda1500, moneda500, moneda100;
     private ButtonGroup monedas;
     private Seleccion eleccion;
-    private int monedaElegida;
     private Comprador comprador;
     private Expendedor exp;
 
@@ -94,25 +93,18 @@ class PanelComprador extends JPanel implements ActionListener {
         }
 
         if (moneda1500.isSelected()) {
-            monedaElegida = 1500;
             mon = new Moneda1500();
         } else if (moneda1000.isSelected()) {
-            monedaElegida = 1000;
             mon = new Moneda1000();
         } else if (moneda500.isSelected()) {
-            monedaElegida = 500;
             mon = new Moneda500();
         } else if (moneda100.isSelected()) {
-            monedaElegida = 100;
             mon = new Moneda100();
         } else {
             mon = null;
         }
 
         
-
-        // this.comprador = new Comprador(mon, eleccion.getOpcion(), exp);
-
     }
 
 

@@ -131,4 +131,25 @@ public class Expendedor {
     public Producto getProducto() {
         return productoUnico.getProducto();
     }
+    public int MiraDeposito(int CualProducto) {
+        int Cantidad=0;
+        switch (CualProducto) {
+            case 1:
+                Cantidad = coca.size();
+                break;
+            case 2:
+                Cantidad = sprite.size();
+                break;
+            case 3:
+                Cantidad = fanta.size();
+                break;
+            case 4:
+                Cantidad = snickers.size();
+                break;
+            case 5:
+                Cantidad = super8.size();
+                break;
+        }
+        return Cantidad;
+    }
 }

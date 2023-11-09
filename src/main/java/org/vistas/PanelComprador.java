@@ -1,10 +1,10 @@
 package org.vistas;
 
 import org.example.*;
-import org.example.Expendedor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 
 
 //a
@@ -72,7 +72,7 @@ class PanelComprador extends JPanel implements ActionListener {
         String producto = (String) opcionesProductos.getSelectedItem();
         Moneda mon;
        
-        switch (producto) {
+        switch (Objects.requireNonNull(producto)) {
             case "CocaCola":
                 eleccion = Seleccion.COCACOLA;
                 break;
@@ -111,7 +111,7 @@ class PanelComprador extends JPanel implements ActionListener {
 
         
 
-        // this.comprador = new Comprador(mon, eleccion.getOpcion(), exp);
+        //this.comprador = new Comprador(mon, eleccion.getOpcion(), exp);
 
     }
 

@@ -9,9 +9,11 @@ import javax.swing.JPanel;
 
 class PanelExpendedor extends JPanel {
     private Expendedor exp;
+    private int initsize;
 
     PanelExpendedor(Expendedor exp) {
         this.exp = exp;
+        initsize = exp.MiraDeposito(1);
     }
     @Override
     public void paint(Graphics g) {
@@ -39,6 +41,7 @@ class PanelExpendedor extends JPanel {
         dibujarProducto(g, x, y, exp.MiraDeposito(5), "Super8", Color.MAGENTA);
         y += 55;
         //dibuja las monedas
+        paintMonVu(g, x, y);
 
 
     }
@@ -59,6 +62,10 @@ class PanelExpendedor extends JPanel {
         }
     }
     // Método para dibujar un monedas con la cantidad especificada
+    public void paintMonVu(Graphics g, int x, int y){
+
+
+    }
     private void dibujarMonedas(Graphics g, int x, int y, int cantidad, String valor, Color color) {
         for (int i = 0; i < cantidad; i++) {
             g.setColor(color);
@@ -73,6 +80,9 @@ class PanelExpendedor extends JPanel {
             x += 10; // Espacio horizontal entre productos
         }
     }
-
-
+    public void handleMouseClick(int x, int y) {
+        exp.rellenarVoids(initsize);
+        // Después de procesar el clic, llama a repaint para actualizar la interfaz gráfica.
+        repaint();
+    }
 }

@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-
+import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -16,8 +16,12 @@ class PanelVuelto extends JPanel {
     private Expendedor exp;
 
     public PanelVuelto(Expendedor exp) {
+        this.setBackground(Color.RED);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.exp = exp;
+        // Establecer un tamaño preferido para el panel
+        this.setPreferredSize(new Dimension(300, 200));
+        this.setBackground(Color.RED);
     }
 
     @Override

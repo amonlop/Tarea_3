@@ -22,7 +22,7 @@ class PanelComprador extends JPanel implements ActionListener {
         this.setLayout(new BorderLayout());
         this.panelProductos = new PanelProductos();
         this.panelMonedas = new PanelElegirMoneda();
-        this.panelVuelto = new PanelVuelto();
+        this.panelVuelto = new PanelVuelto(exp);
 
         JButton botonComprar = panelProductos.getBotonComprar();
         botonComprar.addActionListener(this);
@@ -86,7 +86,7 @@ class PanelComprador extends JPanel implements ActionListener {
             System.out.println(error3.getMessage());
         }
 
-
+        panelVuelto.setEleccionProducto(eleccion.getOpcion());
     }
 
 

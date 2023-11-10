@@ -19,7 +19,7 @@ class PanelComprador extends JPanel implements ActionListener {
 
     public PanelComprador(Expendedor exp) {
         this.exp = exp;
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new BorderLayout());
         this.panelProductos = new PanelProductos();
         this.panelMonedas = new PanelElegirMoneda();
         this.panelVuelto = new PanelVuelto(exp);
@@ -27,17 +27,17 @@ class PanelComprador extends JPanel implements ActionListener {
         JButton botonComprar = panelProductos.getBotonComprar();
         botonComprar.addActionListener(this);
 
-        this.add(panelProductos);
-        this.add(panelMonedas);
-        this.add(panelVuelto);
-    }
+        this.add(panelProductos, BorderLayout.CENTER);
+        this.add(panelMonedas, BorderLayout.NORTH);
+        this.add(panelVuelto, BorderLayout.SOUTH);
 
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String producto = (String) panelProductos.getOpcionesProducto().getSelectedItem();
         Moneda mon;
-       
+
         //ver el switch
         switch (Objects.requireNonNull(producto)) {
             case "CocaCola":
@@ -78,23 +78,22 @@ class PanelComprador extends JPanel implements ActionListener {
 
         try {
             this.comprador = new Comprador(mon, eleccion.getOpcion(), exp);
-        } catch(PagoIncorrectoException error1) {
+            panelVuelto.setEleccionProducto(eleccion.getOpcion());
+        } catch (PagoIncorrectoException error1) {
             System.out.println(error1.getMessage());
-        } catch(NoHayProductoException error2) {
+        } catch (NoHayProductoException error2) {
             System.out.println(error2.getMessage());
-        } catch(PagoInsuficienteException error3) {
+        } catch (PagoInsuficienteException error3) {
             System.out.println(error3.getMessage());
         }
+
 
         panelVuelto.setEleccionProducto(eleccion.getOpcion());
     }
 
-
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        for (int i = 0; i < 90; i++) {
-            // g.setColor(Color.RED);
-            // g.drawRect(50+i*5, 400+5*i, 50, 50);
-        }
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        panelVuelto.paint(g);
     }
 }

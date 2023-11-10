@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -16,11 +16,7 @@ class PanelVuelto extends JPanel {
     private Expendedor exp;
 
     public PanelVuelto(Expendedor exp) {
-        this.setBackground(Color.RED);
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.exp = exp;
-        // Establecer un tamaño preferido para el panel
-        this.setPreferredSize(new Dimension(300, 200));
         this.setBackground(Color.RED);
     }
 
@@ -39,8 +35,8 @@ class PanelVuelto extends JPanel {
 
     public void setEleccionProducto(int eleccion) {
         eleccionProducto = eleccion;
-
     }
+
     public void dibujarProducto(Graphics g,int x, int y, int producto) {
         String queProducto = "";
         Color color = Color.white; 
@@ -68,12 +64,16 @@ class PanelVuelto extends JPanel {
             default:
                 break;
         }
+
         g.setColor(color);
         g.fillRect(x, y, 50, 50);
         g.setColor(Color.WHITE);
         g.drawString(queProducto, x + 5, y + 15);
+
         // Dibujar el borde del rectángulo
         g.setColor(Color.WHITE);
         g.drawRect(x, y, 50, 50);
+
     }
+
 }

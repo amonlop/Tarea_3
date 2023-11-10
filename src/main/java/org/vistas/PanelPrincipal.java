@@ -40,7 +40,6 @@ class PanelPrincipal extends JPanel {
                     // Procesar el clic del mouse en PanelComprador
                     //com.handleMouseClick(x, y);
                 }
-
                 // Llamar a repaint para actualizar la interfaz gráfica
                 repaint();
             }
@@ -62,7 +61,4 @@ class PanelPrincipal extends JPanel {
             }
         });
     }
-
-
-
 }

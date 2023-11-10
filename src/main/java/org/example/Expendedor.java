@@ -1,6 +1,4 @@
 package org.example;
-
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Expendedor {
@@ -11,7 +9,7 @@ public class Expendedor {
     private Deposito<Producto> super8;
 
     private Deposito<Moneda> monVu;
-    private Deposito<Moneda> monVuGUI;
+    private ArrayList<Moneda> monVuGUI;
 
     private DepositoProducto productoUnico;
 
@@ -22,7 +20,7 @@ public class Expendedor {
         snickers = new Deposito<>();
         super8 = new Deposito<>();
         monVu = new Deposito<>();
-        monVuGUI = new Deposito<>();
+        monVuGUI = new ArrayList<Moneda>();
 
         //numero de serie
         for(int i = 0; i < cantProductos; i++) {
@@ -45,9 +43,6 @@ public class Expendedor {
         if(m == null)  { // excepcion PagoIncorrecto
             throw new PagoIncorrectoException("No se ingresó una moneda");
         }
-
-        monVuGUI.addElemento(m);
-
         switch (seleccion) {
             case 1:
                 opcion = Seleccion.COCACOLA;
@@ -124,9 +119,8 @@ public class Expendedor {
             monVu.addElemento(m);
             throw new NoHayProductoException("No hay más producto: " + precio.name());
         }
-
         this.productoUnico = new DepositoProducto(producto);
-
+        monVuGUI.add(m);
     }
 
     public Moneda getVuelto() {
@@ -159,12 +153,6 @@ public class Expendedor {
             case 5:
                 Cantidad = super8.size();
                 break;
-            // case 6:
-            //     Cantidad = monVu.size();
-            //     break;
-            // case 7:
-            //     Cantidad = monVuGUI.size();
-            //     break;
         }
         return Cantidad;
     }
@@ -198,5 +186,8 @@ public class Expendedor {
                 super8.addElemento(new Super8(i + 4 * cuanto));
             }
         }
+    }
+    public ArrayList<Moneda> getterMonVuGui(){
+        return monVuGUI;
     }
 }

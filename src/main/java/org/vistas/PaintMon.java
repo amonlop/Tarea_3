@@ -23,7 +23,7 @@ public class PaintMon {
                     break;
             }
 
-            x =+ i*5;
+            x =+ i*35;
         }
     }
     private void dibujarMonedas(Graphics g, int x, int y, String valor, Color color) {
@@ -35,7 +35,5 @@ public class PaintMon {
         // Dibujar el borde del círculo
         g.setColor(Color.WHITE);
         g.drawOval(x, y, 50, 50);
-
-        x += 40; // Espacio horizontal entre productos
     }
 }

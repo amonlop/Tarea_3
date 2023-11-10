@@ -13,10 +13,10 @@ class PanelProductos extends JPanel {
         textoSeleccion = new JLabel("Selecciona un producto:");
         opcionesProductos = new JComboBox<>(new String[]{"Fanta", "CocaCola", "Sprite", "Snickers", "Super8"});
         botonComprar = new JButton("Comprar");
-        this.setLayout(new BorderLayout());
-        this.add(textoSeleccion, BorderLayout.NORTH);
-        this.add(opcionesProductos, BorderLayout.CENTER);
-        this.add(botonComprar, BorderLayout.SOUTH);
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.add(textoSeleccion);
+        this.add(opcionesProductos);
+        this.add(botonComprar);
     }
 
     public JComboBox<String> getOpcionesProducto() {

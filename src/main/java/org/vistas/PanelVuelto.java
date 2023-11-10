@@ -35,8 +35,8 @@ class PanelVuelto extends JPanel {
 
     public void setEleccionProducto(int eleccion) {
         eleccionProducto = eleccion;
-    }
 
+    }
     public void dibujarProducto(Graphics g,int x, int y, int producto) {
         String queProducto = "";
         Color color = Color.white; 
@@ -64,17 +64,12 @@ class PanelVuelto extends JPanel {
             default:
                 break;
         }
-
         g.setColor(color);
         g.fillRect(x, y, 50, 50);
         g.setColor(Color.WHITE);
         g.drawString(queProducto, x + 5, y + 15);
-
         // Dibujar el borde del rectángulo
         g.setColor(Color.WHITE);
         g.drawRect(x, y, 50, 50);
-
     }
-
-
 }
